@@ -21,8 +21,8 @@ CREATE TABLE `profiles` (
     birthday DATE,
 	photo_id BIGINT UNSIGNED NOT NULL,
     created_at DATETIME DEFAULT NOW(),
-    hometown VARCHAR(100), 
-    FOREIGN KEY (photo_id) REFERENCES media(id) -- пока рано, т.к. таблицы media еще нет
+    hometown VARCHAR(100)
+  --  FOREIGN KEY (photo_id) REFERENCES media(id) -- пока рано, т.к. таблицы media еще нет
 );
 
 ALTER TABLE `profiles` ADD CONSTRAINT fk_user_id
@@ -31,7 +31,7 @@ ALTER TABLE `profiles` ADD CONSTRAINT fk_user_id
     ON DELETE RESTRICT; -- (значение по умолчанию, запред удаления юзера без профиля)
 
 drop table if exists media;
-creat table media (
+create table `media` (
 	id serial,
 	name VARCHAR(255),
     created_at DATETIME DEFAULT NOW(),
@@ -39,7 +39,7 @@ creat table media (
 );
 
 drop table if exists status;
-creat table status (
+create table status (
 	status_user_id BIGINT UNSIGNED NOT NULL,
 	body VARCHAR(255),
     created_at DATETIME DEFAULT NOW(),
